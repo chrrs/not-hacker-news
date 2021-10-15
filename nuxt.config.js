@@ -21,4 +21,7 @@ export default {
     buildModules: ['@nuxt/typescript-build', 'nuxt-windicss'],
     modules: [],
     build: {},
+    server: {
+        host: '0.0.0.0',
+    },
 };
