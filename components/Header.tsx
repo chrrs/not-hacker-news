@@ -7,7 +7,7 @@ const Header: React.FC = () => {
                 <div className="flex items-center">
                     <Link href="/" passHref>
                         <a className="flex items-center gap-2 mr-2">
-                            <span className="inline-block bg-red-500 w-8 h-8 text-white" />
+                            <span className="inline-block bg-orange-500 w-8 h-8 text-white" />
                             <span className="font-semibold">
                                 <span className="border-b-2 border-black">
                                     Not
