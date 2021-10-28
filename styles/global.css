@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.header-link {
+    @apply inline-block px-2 py-1 h-full hover:bg-gray-100 rounded transition-colors;
+}
