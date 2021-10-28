@@ -1,36 +1,30 @@
 {
     "compilerOptions": {
-        "target": "ES2018",
-        "module": "ESNext",
-        "moduleResolution": "Node",
+        "target": "es5",
         "lib": [
-            "ESNext",
-            "ESNext.AsyncIterable",
-            "DOM"
+            "dom",
+            "dom.iterable",
+            "esnext"
         ],
-        "esModuleInterop": true,
         "allowJs": true,
-        "sourceMap": true,
-        "strict": true,
+        "skipLibCheck": true,
+        "strict": false,
+        "forceConsistentCasingInFileNames": true,
         "noEmit": true,
-        "experimentalDecorators": true,
-        "baseUrl": ".",
-        "paths": {
-            "~/*": [
-                "./*"
-            ],
-            "@/*": [
-                "./*"
-            ]
-        },
-        "types": [
-            "@nuxt/types",
-            "@types/node"
-        ]
+        "incremental": true,
+        "esModuleInterop": true,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "jsx": "preserve"
     },
+    "include": [
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx"
+    ],
     "exclude": [
-        "node_modules",
-        ".nuxt",
-        "dist"
+        "node_modules"
     ]
 }
