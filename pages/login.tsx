@@ -1,4 +1,9 @@
-import { NextPage } from 'next';
+import {
+    GetServerSidePropsContext,
+    GetServerSidePropsResult,
+    NextPage,
+} from 'next';
+import { getSession, signIn } from 'next-auth/react';
 import Image from 'next/image';
 import Header from '../components/Header';
 
@@ -9,7 +14,10 @@ const Login: NextPage = () => {
             <div className="flex flex-col gap-4 max-w-md w-full m-auto mt-8">
                 <h1 className="font-semibold text-2xl text-center">Log in</h1>
                 <div className="flex flex-col gap-2">
-                    <button className="login-button bg-blue-600 hover:bg-blue-500 active:bg-blue-700">
+                    <button
+                        className="login-button bg-blue-600 hover:bg-blue-500 active:bg-blue-700"
+                        onClick={() => signIn('google', { callbackUrl: '/' })}
+                    >
                         <Image
                             src="/icons/google.svg"
                             alt="Google Logo"
@@ -34,3 +42,21 @@ const Login: NextPage = () => {
 };
 
 export default Login;
+
+export async function getServerSideProps({
+    req,
+}: GetServerSidePropsContext): Promise<GetServerSidePropsResult<unknown>> {
+    const session = await getSession({ req });
+    if (session) {
+        return {
+            redirect: {
+                destination: '/',
+                permanent: false,
+            },
+        };
+    } else {
+        return {
+            props: {},
+        };
+    }
+}
