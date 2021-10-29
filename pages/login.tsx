@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 import Image from 'next/image';
 import Header from '../components/Header';
 
-const NotFound: NextPage = () => {
+const Login: NextPage = () => {
     return (
         <div className="flex flex-col min-h-screen bg-gray-50">
             <Header />
@@ -33,4 +33,4 @@ const NotFound: NextPage = () => {
     );
 };
 
-export default NotFound;
+export default Login;
