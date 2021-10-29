@@ -2,6 +2,10 @@
     @apply inline-block px-2 py-1 h-full hover:bg-gray-100 rounded transition-colors;
 }
 
+.header-link:focus {
+    @apply outline-none;
+}
+
 .login-button {
     @apply flex justify-center items-center gap-4 w-full py-2 text-white font-semibold rounded transition-colors;
 }
