@@ -67,7 +67,7 @@ const AccountIndicator: React.FC = () => {
         return (
             <div className="flex items-center">
                 <Link href="/login" passHref>
-                    <a className="header-link">Login</a>
+                    <a className="header-link">Log in</a>
                 </Link>
             </div>
         );
