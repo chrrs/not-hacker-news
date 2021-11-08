@@ -30,6 +30,7 @@ const server = new ApolloServer({
     resolvers,
     plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
     debug: false,
+    introspection: true,
     context: async () => {
         try {
             return { db: await getDb() };
