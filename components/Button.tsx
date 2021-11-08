@@ -1,4 +1,6 @@
-const Button: React.FC<{ type?: string }> = ({ children, ...props }) => {
+const Button: React.FC<{
+    type?: 'primary' | 'link' | 'default';
+}> = ({ children, ...props }) => {
     return (
         <button
             className={`w-full py-2 font-semibold rounded focus:outline-none transition-colors ${(() => {
