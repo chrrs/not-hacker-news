@@ -1,15 +1,17 @@
 import { NextPage } from 'next';
 import Header from '../components/Header';
+import Message from '../components/Message';
 
 const ServerError: NextPage = () => {
     return (
         <div className="min-h-screen bg-gray-50">
             <Header />
-            <div className="flex-1 flex flex-col gap-2 items-center justify-center">
-                <h1 className="text-6xl font-semibold">Well shit.</h1>
-                <p>
-                    <b>500:</b> Internal Server Error
-                </p>
+            <div className="max-w-5xl m-auto mt-8">
+                <Message
+                    type="error"
+                    title="500: Internal server error"
+                    content="Something happened. Sorry about that!"
+                />
             </div>
         </div>
     );
