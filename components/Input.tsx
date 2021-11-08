@@ -4,7 +4,11 @@ import EyeOff from '../public/icons/eye-off.svg';
 
 let nextId = 0;
 
-const Input: React.FC<{ label?: string; type?: 'password' }> = (props) => {
+const Input: React.FC<{
+    label?: string;
+    type?: 'password';
+    error?: string;
+}> = (props) => {
     const [id] = useState(`input-${nextId++}`);
     const [shown, setShown] = useState(false);
 
@@ -13,12 +17,23 @@ const Input: React.FC<{ label?: string; type?: 'password' }> = (props) => {
             {props.label && (
                 <label
                     htmlFor={id}
-                    className="inline-block font-semibold text-sm text-gray-600 mb-2"
+                    className="flex justify-between items-center inline-block font-semibold text-sm text-gray-600 mb-2"
                 >
                     {props.label}
+                    {props.error && (
+                        <span className="text-xs text-red-500">
+                            {props.error}
+                        </span>
+                    )}
                 </label>
             )}
-            <div className="flex w-full rounded border-2 border-gray-300 focus-within:border-blue-300 bg-white">
+            <div
+                className={`flex w-full rounded border-2 ${
+                    props.error
+                        ? 'bg-red-50 border-red-400 focus-within:border-red-500'
+                        : 'bg-white border-gray-300 focus-within:border-blue-300'
+                }`}
+            >
                 <input
                     id={id}
                     type={
