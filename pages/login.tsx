@@ -1,4 +1,5 @@
 import { NextPage } from 'next';
+import Button from '../components/Button';
 import Header from '../components/Header';
 import Input from '../components/Input';
 
@@ -11,10 +12,7 @@ const Login: NextPage = () => {
                 <div className="flex flex-col gap-2">
                     <Input label="Username" />
                     <Input label="Password" type="password" />
-
-                    <button className="w-full py-2 bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white font-semibold rounded focus:outline-none">
-                        Log in
-                    </button>
+                    <Button type="primary">Log in</Button>
                 </div>
             </div>
         </div>
