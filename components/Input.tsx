@@ -7,6 +7,7 @@ let nextId = 0;
 const Input: React.FC<{
     label?: string;
     type?: 'password';
+    placeholder?: string;
     error?: string;
 }> = (props) => {
     const [id] = useState(`input-${nextId++}`);
@@ -40,6 +41,7 @@ const Input: React.FC<{
                         props.type == 'password' && shown ? 'text' : props.type
                     }
                     className="flex-grow py-2 px-4 focus:outline-none bg-transparent"
+                    placeholder={props.placeholder}
                 />
                 {props.type == 'password' && (
                     <button
