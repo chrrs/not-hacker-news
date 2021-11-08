@@ -5,16 +5,3 @@
 .header-link:focus {
     @apply outline-none;
 }
-
-/*.login-button {
-    @apply flex justify-center items-center gap-4 w-full py-2 text-white font-semibold rounded transition-colors;
-}
-
-.login-button.disabled {
-    @apply opacity-20 cursor-not-allowed;
-}
-
-.login-button img {
-    @apply h-5 filter invert;
-}
-*/
