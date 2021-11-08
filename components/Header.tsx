@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import AccountIndicator from './AccountIndicator';
 
 const Header: React.FC = () => {
     return (
@@ -36,7 +35,9 @@ const Header: React.FC = () => {
                         <a className="header-link">Jobs</a>
                     </Link>
                 </div>
-                <AccountIndicator />
+                <Link href="/login" passHref>
+                    <a className="header-link">Log in</a>
+                </Link>
             </div>
         </div>
     );

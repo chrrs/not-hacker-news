@@ -1,14 +1,8 @@
 import '../styles/global.css';
 import 'windi.css';
 
-import { SessionProvider } from 'next-auth/react';
-
 function App({ Component, pageProps: { session, ...pageProps } }) {
-    return (
-        <SessionProvider session={session}>
-            <Component {...pageProps} />
-        </SessionProvider>
-    );
+    return <Component {...pageProps} />;
 }
 
 export default App;

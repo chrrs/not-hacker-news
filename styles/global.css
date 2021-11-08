@@ -6,7 +6,7 @@
     @apply outline-none;
 }
 
-.login-button {
+/*.login-button {
     @apply flex justify-center items-center gap-4 w-full py-2 text-white font-semibold rounded transition-colors;
 }
 
@@ -17,3 +17,4 @@
 .login-button img {
     @apply h-5 filter invert;
 }
+*/
