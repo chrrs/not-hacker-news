@@ -1,7 +1,6 @@
 import { Db, MongoClient, MongoClientOptions } from 'mongodb';
 
 const uri = process.env.MONGO_URI;
-const database = process.env.MONGO_DB;
 const options: MongoClientOptions = {
     // @ts-ignore
     useNewUrlParser: true,
