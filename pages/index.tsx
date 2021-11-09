@@ -2,11 +2,12 @@ import { gql } from 'urql';
 import { GetServerSideProps, NextPage } from 'next';
 import Header from '../components/Header';
 import Message from '../components/Message';
+import Post from '../components/Post';
 import { query } from '../lib/graphql/client';
-import { Post } from '../lib/types';
+import { Post as ApiPost } from '../lib/types';
 
 const Home: NextPage<{
-    data: { posts: Array<Post> };
+    data: { posts: Array<ApiPost> };
     error?: string;
 }> = ({ data, error }) => {
     return (
@@ -21,7 +22,11 @@ const Home: NextPage<{
                         content={error}
                     />
                 ) : (
-                    <div>{data.posts.map((post) => post.title)}</div>
+                    <div className="flex flex-col gap-4">
+                        {data.posts.map((post, index) => (
+                            <Post key={index} number={index + 1} post={post} />
+                        ))}
+                    </div>
                 )}
             </div>
         </div>

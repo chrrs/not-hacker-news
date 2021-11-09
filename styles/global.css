@@ -5,3 +5,7 @@
 .header-link:focus {
     @apply outline-none;
 }
+
+.post-link {
+    @apply border-b-2 hover:(text-black border-b-gray-400) transition-colors cursor-pointer;
+}
