@@ -22,8 +22,17 @@ const PostComponent: React.FC<{ number: number; post: Post }> = (props) => {
                 </a>
                 <p className="text-gray-500">
                     {'by '}
-                    <a className="post-link">{'author'}</a> {'4 hours ago'} |{' '}
+                    <a className="post-link">{'author'}</a> {'4 hours ago'}
+                    {' | '}
                     <a className="post-link">{0} comments</a>
+                    {' | '}
+                    <a className="post-link hover:(text-yellow-500 border-yellow-300)">
+                        save
+                    </a>
+                    {' | '}
+                    <a className="post-link hover:(text-red-500 border-red-300)">
+                        delete
+                    </a>
                 </p>
             </div>
         </div>
