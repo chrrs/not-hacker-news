@@ -35,9 +35,14 @@ const Header: React.FC = () => {
                         <a className="header-link">Jobs</a>
                     </Link>
                 </div>
-                <Link href="/login" passHref>
-                    <a className="header-link">Log in</a>
-                </Link>
+                <div className="flex gap-2">
+                    <Link href="/login" passHref>
+                        <a className="header-link">Log in</a>
+                    </Link>
+                    <a className="header-link px-4 text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700">
+                        Create post
+                    </a>
+                </div>
             </div>
         </div>
     );
