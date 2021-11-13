@@ -1,4 +1,4 @@
-import '../styles/global.css';
+import '../styles/global.scss';
 import 'windi.css';
 
 function App({ Component, pageProps }) {
