@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Eye from '../public/icons/eye.svg';
 import EyeOff from '../public/icons/eye-off.svg';
+import Field from '../components/Field';
 
 let nextId = 0;
 
@@ -14,20 +15,7 @@ const Input: React.FC<{
     const [shown, setShown] = useState(false);
 
     return (
-        <div>
-            {props.label && (
-                <label
-                    htmlFor={id}
-                    className="flex justify-between items-center inline-block font-semibold text-sm text-gray-600 mb-2"
-                >
-                    {props.label}
-                    {props.error && (
-                        <span className="text-xs text-red-500">
-                            {props.error}
-                        </span>
-                    )}
-                </label>
-            )}
+        <Field id={id} label={props.label} error={props.error}>
             <div
                 className={`flex w-full rounded border-2 ${
                     props.error
@@ -52,7 +40,7 @@ const Input: React.FC<{
                     </button>
                 )}
             </div>
-        </div>
+        </Field>
     );
 };
 

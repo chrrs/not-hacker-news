@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Field from '../components/Field';
 
 let nextId = 0;
 
@@ -10,20 +11,7 @@ const TextArea: React.FC<{
     const [id] = useState(`textarea-${nextId++}`);
 
     return (
-        <div>
-            {props.label && (
-                <label
-                    htmlFor={id}
-                    className="flex justify-between items-center inline-block font-semibold text-sm text-gray-600 mb-2"
-                >
-                    {props.label}
-                    {props.error && (
-                        <span className="text-xs text-red-500">
-                            {props.error}
-                        </span>
-                    )}
-                </label>
-            )}
+        <Field id={id} label={props.label} error={props.error}>
             <div
                 className={`flex w-full rounded border-2 ${
                     props.error
@@ -38,7 +26,7 @@ const TextArea: React.FC<{
                     placeholder={props.placeholder}
                 />
             </div>
-        </div>
+        </Field>
     );
 };
 
