@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Moment from 'react-moment';
 import { Post } from '../lib/types';
 
 const PostComponent: React.FC<{ number: number; post: Post }> = (props) => {
@@ -22,7 +23,8 @@ const PostComponent: React.FC<{ number: number; post: Post }> = (props) => {
                 </a>
                 <p className="text-gray-500">
                     {'by '}
-                    <a className="post-link">{'author'}</a> {'4 hours ago'}
+                    <a className="post-link">{'unknown'}</a>{' '}
+                    <Moment date={props.post.posted} fromNow />
                     <span className="text-gray-300"> - </span>
                     <a className="post-link">{0} comments</a>
                     <span className="text-gray-300"> - </span>

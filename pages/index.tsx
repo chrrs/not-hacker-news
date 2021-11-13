@@ -41,6 +41,7 @@ export const getServerSideProps: GetServerSideProps = async (_ctx) => {
             posts {
                 title
                 url
+                posted
             }
         }
     `);
