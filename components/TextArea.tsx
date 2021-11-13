@@ -2,12 +2,12 @@ import { useState } from 'react';
 
 let nextId = 0;
 
-const Input: React.FC<{
+const TextArea: React.FC<{
     label?: string;
     placeholder?: string;
     error?: string;
 }> = (props) => {
-    const [id] = useState(`input-${nextId++}`);
+    const [id] = useState(`textarea-${nextId++}`);
 
     return (
         <div>
@@ -42,4 +42,4 @@ const Input: React.FC<{
     );
 };
 
-export default Input;
+export default TextArea;
