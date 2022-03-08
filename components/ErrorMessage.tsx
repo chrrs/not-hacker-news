@@ -10,7 +10,7 @@ const Wrapper = styled('div', {
 });
 
 const Title = styled('h1', {
-	fontWeight: '500',
+	fontWeight: '600',
 	fontSize: '16px',
 	margin: 0,
 });

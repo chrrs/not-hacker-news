@@ -9,7 +9,7 @@ const Square = styled('div', {
 
 const LogoText = styled('p', {
 	margin: 0,
-	fontWeight: '500',
+	fontWeight: '600',
 });
 
 const Underlined = styled('span', {
