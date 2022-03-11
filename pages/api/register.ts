@@ -1,9 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { setAuthCookie } from '$lib/auth';
+import { ensureDbConnection } from '$lib/db';
 import { UserModel } from '$lib/model/user';
 import bcrypt from 'bcrypt';
-import { ensureDbConnection } from '$lib/db';
+import { setAuthCookie } from '$lib/auth';
 import { ApiError, extractApiUserFields, User } from '$lib/api';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<User | ApiError>) {
@@ -15,22 +15,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 		return;
 	}
 
-	const user = await UserModel.findOne({ name }).collation({
-		locale: 'en',
-		strength: 2,
+	if (
+		await UserModel.findOne({ name }).collation({
+			locale: 'en',
+			strength: 2,
+		})
+	) {
+		res.status(400).json({ error: 'name already taken' });
+		return;
+	}
+
+	const user = await UserModel.create({
+		name,
+		password: await bcrypt.hash(password, 4),
 	});
-
-	if (!user) {
-		res.status(400).json({ error: 'incorrect username or password' });
-		return;
-	}
-
-	if (!(await bcrypt.compare(password, user.password))) {
-		res.status(400).json({ error: 'incorrect username or password' });
-		return;
-	}
 
 	await setAuthCookie(res, { id: user._id.toString() });
 
-	res.status(200).json(extractApiUserFields(user));
+	res.status(201).json(extractApiUserFields(user));
 }

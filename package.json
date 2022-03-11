@@ -13,13 +13,17 @@
 		"@hapi/iron": "^6.0.0",
 		"@radix-ui/colors": "^0.1.8",
 		"@stitches/react": "^1.2.7",
+		"bcrypt": "^5.0.1",
 		"cookie": "^0.4.2",
+		"csrf": "^3.1.0",
+		"mongoose": "^6.2.5",
 		"next": "12.1.0",
 		"react": "17.0.2",
 		"react-dom": "17.0.2",
 		"stitches-normalize-css": "^1.2.0"
 	},
 	"devDependencies": {
+		"@types/bcrypt": "^5.0.0",
 		"@types/cookie": "^0.4.1",
 		"@types/node": "17.0.21",
 		"@types/react": "17.0.39",
