@@ -7,6 +7,8 @@ import { DbUser, UserModel } from '$lib/model/user';
 import { ensureDbConnection } from '$lib/db';
 import { ApiError } from './api';
 
+const TOKEN_LIFETIME = 60 * 60 * 24 * 30;
+
 const csrf = new Tokens();
 
 export type Token = {
@@ -34,25 +36,27 @@ export async function getAuthCookie(req: NextApiRequest): Promise<Token | undefi
 export async function setAuthCookie(res: NextApiResponse, token: Omit<Token, 'csrf'>) {
 	const csrfPair = await generateCsrfPair();
 
+	// TODO: Hide this behind a layer of refresh tokens, make expiry shorter.
 	res.setHeader('Set-Cookie', [
 		serialize(
 			'token',
 			await Iron.seal({ ...token, csrf: csrfPair[0] }, process.env.SECRET as string, {
 				...Iron.defaults,
-				// TODO: Set ttl to something small.
+				ttl: 1000 * TOKEN_LIFETIME,
 			}),
 			{
 				httpOnly: true,
 				secure: process.env.NODE_ENV !== 'development',
 				sameSite: 'lax',
 				path: '/',
-				// TODO: Set expiry to something small
+				maxAge: TOKEN_LIFETIME,
 			}
 		),
 		serialize('csrf', csrfPair[1], {
 			secure: process.env.NODE_ENV !== 'development',
 			sameSite: 'lax',
 			path: '/',
+			maxAge: TOKEN_LIFETIME,
 		}),
 	]);
 }
