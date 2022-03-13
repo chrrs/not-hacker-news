@@ -10,6 +10,10 @@ import { ApiError } from './api';
 const SECRET = process.env.SECRET as string;
 const TOKEN_LIFETIME = 60 * 60 * 24 * 30;
 
+if (!SECRET) {
+	throw new Error('No SECRET specified in environment.');
+}
+
 const csrf = new Tokens();
 
 export type Token = {
@@ -25,7 +29,7 @@ export async function generateCsrfPair(): Promise<[string, string]> {
 export async function getAuthCookie(req: NextApiRequest): Promise<Token | undefined> {
 	const auth = req.cookies['token'];
 	if (auth) {
-		return await Iron.unseal(auth, process.env.SECRET as string, {
+		return await Iron.unseal(auth, SECRET, {
 			...Iron.defaults,
 			// TODO: Set ttl to something small.
 		});
@@ -41,7 +45,7 @@ export async function setAuthCookie(res: NextApiResponse, token: Omit<Token, 'cs
 	res.setHeader('Set-Cookie', [
 		serialize(
 			'token',
-			await Iron.seal({ ...token, csrf: csrfPair[0] }, process.env.SECRET as string, {
+			await Iron.seal({ ...token, csrf: csrfPair[0] }, SECRET, {
 				...Iron.defaults,
 				ttl: 1000 * TOKEN_LIFETIME,
 			}),
