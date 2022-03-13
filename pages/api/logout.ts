@@ -1,8 +1,7 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-
 import { clearAuthCookie } from '$lib/auth';
+import { withoutErrors } from '$lib/errors';
 
-export default async function handler(_: NextApiRequest, res: NextApiResponse) {
+export default withoutErrors(async (_, res) => {
 	await clearAuthCookie(res);
 	res.end();
-}
+});

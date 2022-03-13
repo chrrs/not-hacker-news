@@ -5,6 +5,7 @@ export interface User {
 
 export interface ApiError {
 	error: string;
+	message: string;
 }
 
 export function extractApiUserFields<T extends User>(user: T): User {

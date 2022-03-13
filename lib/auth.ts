@@ -7,6 +7,7 @@ import { DbUser, UserModel } from '$lib/model/user';
 import { ensureDbConnection } from '$lib/db';
 import { ApiError } from './api';
 
+const SECRET = process.env.SECRET as string;
 const TOKEN_LIFETIME = 60 * 60 * 24 * 30;
 
 const csrf = new Tokens();
@@ -84,7 +85,10 @@ export function withToken<T>(handler: TokenApiHandler<T>): TokenApiHandler<T | A
 
 		if (req.token) {
 			if (!csrf.verify(req.token.csrf, req.headers.csrf as string)) {
-				res.status(401).json({ error: 'csrf token validation failed' });
+				res.status(401).json({
+					error: 'invalid_csrf_token',
+					message: 'CSRF token validation failed.',
+				});
 				return;
 			}
 		}
